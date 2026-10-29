@@ -37,3 +37,6 @@ Run it again to see the price comparison logic in action.
 - **SQLite for history:** Storing only the current price is useless. Storing the history allows for future features like trend analysis.
 - **Ethical scraping:** Includes a 1-second `time.sleep()` and a transparent User-Agent. We target `books.toscrape.com`, an open sandbox designed specifically for this purpose.
 - **Fail-fast configuration:** Exits immediately if the HTML structure changes or the network request fails, preventing silent data corruption.
+
+- ## Security Threat Model
+This tool is designed strictly as a local CLI. The user executing the command is the sole operator. Therefore, SSRF (Server-Side Request Forgery) is not applicable because the user explicitly provides the target URL. If this code is ever adapted into an HTTP microservice, the URL input **must** be validated against an allowlist of domains to prevent SSRF.
